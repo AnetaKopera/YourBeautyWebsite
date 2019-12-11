@@ -1,5 +1,7 @@
 <?php 
 
+session_start();
+
 
 $response = array();
 
@@ -9,6 +11,7 @@ if (empty($nameOfCompany))
 	$response["success"] = 0;
     $response["message"] = "Error in attribute nameOfCompany";
     echo json_encode($response);
+	header("location: create_firm_form.php");
 	exit();
 }
 
@@ -20,6 +23,7 @@ if (empty($idOwner))
 	$response["success"] = 0;
     $response["message"] = "Errror in attribute idOwner";
     echo json_encode($response);
+	header("location: create_firm_form.php");
 	exit();
 }
 
@@ -30,6 +34,7 @@ if ((empty($city)))
 	$response["success"] = 0;
     $response["message"] = "Error in attribute city";
     echo json_encode($response);
+	header("location: create_firm_form.php");
 	exit();
 }
 
@@ -40,6 +45,7 @@ if ((empty($street)))
 	$response["success"] = 0;
     $response["message"] = "Error in attribute street";
     echo json_encode($response);
+	header("location: create_firm_form.php");
 	exit();
 }
 
@@ -73,15 +79,22 @@ $statement->execute();
         $response["success"] = 1;
         $response["message"] = "Firm created.";
  
+		$_SESSION['added_user']=true;
         echo json_encode($response);
+		header("location: create_firm_form.php");
+		exit();
     } 
 	else {
 		
         $response["success"] = 0;
         $response["message"] = "Error in create firm";
+		
+		$_SESSION['added_user']=false;
  
         // echoing JSON response
         echo json_encode($response);
+		header("location: create_firm_form.php");
+		exit();
     }
 
 ?>

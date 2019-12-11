@@ -21,23 +21,25 @@
   <a href="create_worker_form.php">Add worker </a>
 </div>
 
-<form action="add_new_tenure.php" method="post">
+<div class="formularz">
+	<form action="add_new_tenure.php" method="post">
 
 
-<label for="idFirm">Id firm: </label>
-<input type="text" id = "idFirm" name = "idFirm"><br>
+	<label for="idFirm">Id firm: </label>
+	<input type="text" id = "idFirm" name = "idFirm"><br>
 
 
-<label for="idService">Id service: </label>
-<input type="text" id = "idService" name = "idService"><br>
+	<label for="idService">Id service: </label>
+	<input type="text" id = "idService" name = "idService"><br>
 
 
-<label for="idWorker">Id worker: </label>
-<input type="text" id = "idWorker" name = "idWorker"><br>
+	<label for="idWorker">Id worker: </label>
+	<input type="text" id = "idWorker" name = "idWorker"><br>
 
-          
-<input type="submit" value="Create tenure">
-</form>
+			  
+	<input type="submit" value="Create tenure">
+	</form>
+</div>
 
 </body>
 </html>

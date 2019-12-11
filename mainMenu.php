@@ -16,8 +16,8 @@
 </div>
 
 <div style="padding-left:16px">
-  <h2>Top Navigation Example</h2>
-  <p>Some content..</p>
+  <h2>Hello administrator!</h2>
+  <p>Choose option in naviationbar to add values, edit or  display tables. </p>
 </div>
 
 </body>

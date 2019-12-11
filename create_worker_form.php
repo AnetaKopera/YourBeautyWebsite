@@ -21,19 +21,21 @@
   <a class="active" href="create_worker_form.php">Add worker </a>
 </div>
 
-<form action="add_new_user.php" method="post">
-<!--INSERT INTO `workers`( `idUser`, `idFirm`, `idWorkSchedule`) VALUES (")-->
-<label for="idUser">Id user: </label>
-<input type="text" id = "idUser" name = "idUser"><br>
+<div class="formularz">
+	<form action="add_new_user.php" method="post">
+	<!--INSERT INTO `workers`( `idUser`, `idFirm`, `idWorkSchedule`) VALUES (")-->
+	<label for="idUser">Id user: </label>
+	<input type="text" id = "idUser" name = "idUser"><br>
 
-<label for="idFirm">Id firm: </label>
-<input type="text" id = "idFirm" name = "idFirm"><br>
+	<label for="idFirm">Id firm: </label>
+	<input type="text" id = "idFirm" name = "idFirm"><br>
 
-<label for="idWorkSchedule"> Id work schedule: </label>
-<input type="text" id = "idWorkSchedule" name = "idWorkSchedule"><br>
+	<label for="idWorkSchedule"> Id work schedule: </label>
+	<input type="text" id = "idWorkSchedule" name = "idWorkSchedule"><br>
 
-<input type="submit" value="Create worker">
-</form>
+	<input type="submit" value="Create worker">
+	</form>
+</div>
 
 </body>
 </html>

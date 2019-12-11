@@ -20,28 +20,47 @@
   <a href="create_worker_form.php">Add worker </a>
 </div>
 
-<form action="add_new_service.php" method="post">
+<div class="formularz">
+	<form action="add_new_service.php" method="post">
 
-<label for="typeOfService">Type of service: </label>
-<input type="text" id = "typeOfService" name = "typeOfService"><br>
+	<label for="typeOfService">Type of service: </label>
+	<input type="text" id = "typeOfService" name = "typeOfService"><br>
 
-<label for="description">Description: </label>
-<input type="text" id = "description" name = "description"><br>
-
-
-<label for="price">Price: </label>
-<input type="text" id = "price" name = "price"><br>
+	<label for="description">Description: </label>
+	<input type="text" id = "description" name = "description"><br>
 
 
-<label for="timeOfService">Time of service: </label>
-<input type="text" id = "timeOfService" name = "timeOfService"><br>
+	<label for="price">Price: </label>
+	<input type="text" id = "price" name = "price"><br>
 
 
-<label for="idFirm">Id firm: </label>
-<input type="text" id = "idFirm" name = "idFirm"><br>
-          
-<input type="submit" value="Create service">
-</form>
+	<label for="timeOfService">Time of service: </label>
+	<input type="text" id = "timeOfService" name = "timeOfService"><br>
+
+
+	<label for="idFirm">Id firm: </label>
+	<input type="text" id = "idFirm" name = "idFirm"><br>
+			  
+	<input type="submit" value="Create service">
+	</form>
+	
+	<div id="snackbar">Service successfull added!</div>
+	
+	<?php
+	
+	if(isset($_SESSION['added_service']) && ($_SESSION['added_service']==true))
+	{
+		
+		echo '<script type="text/javascript">',
+		'var x = document.getElementById("snackbar"); x.className = "show"; setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);',
+		'</script>';
+		
+		unset($_SESSION['added_service']);
+		
+	}
+	?>
+	
+</div>
 
 </body>
 </html>
