@@ -66,20 +66,16 @@ $statement->bindParam(":idFirm", $idFirm, PDO::PARAM_INT);
 $statement->execute();
 
 
-  if ($query) {
-        // successfully inserted into database
-        $response["success"] = 1;
-        $response["message"] = "Service created.";
- 
-        echo json_encode($response);
+   if ($query) {
+		$_SESSION['added_service']=true;
+		header("location: create_service_form.php");
+		exit();
     } 
 	else {
-		
-        $response["success"] = 0;
-        $response["message"] = "Error in create service";
- 
-        // echoing JSON response
-        echo json_encode($response);
+		$_SESSION['added_service']=false;
+		header("location: create_service_form.php");
+		exit();
     }
+
 
 ?>

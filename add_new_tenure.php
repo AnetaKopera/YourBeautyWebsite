@@ -48,22 +48,16 @@ $statement->execute();
 
 
 
-  if ($query) 
-  {
-        // successfully inserted into database
-        $response["success"] = 1;
-        $response["message"] = "Tenure created.";
- 
-        // echoing JSON response
-        echo json_encode($response);
-    } else 
-	{
-        // failed to insert row
-        $response["success"] = 0;
-        $response["message"] = "Error in crete tenure";
- 
-        // echoing JSON response
-        echo json_encode($response);
+   if ($query) {
+		$_SESSION['added_tenure']=true;
+		header("location: create_tenure_form.php");
+		exit();
+    } 
+	else {
+		$_SESSION['added_tenure']=false;
+		header("location: create_tenure_form.php");
+		exit();
     }
+
 
 ?>

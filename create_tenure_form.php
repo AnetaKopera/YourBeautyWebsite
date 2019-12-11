@@ -37,9 +37,32 @@
 	<input type="text" id = "idWorker" name = "idWorker"><br>
 
 			  
-	<input type="submit" value="Create tenure">
+	<button class="button" type="submit"><span>Create tenure</span></button>
 	</form>
 </div>
+
+<div id="snackbar">Tenure successfull added!</div>
+	
+	<script>
+	function MyFunction()
+	{
+		var x = document.getElementById("snackbar"); 
+		x.className = "show";
+		setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+	}
+	</script>
+	<?php
+	if(isset($_SESSION['added_tenure']) && ($_SESSION['added_tenure']==true))
+	{
+	
+		echo '<script type="text/javascript">',
+		'MyFunction();',
+		'</script>';
+		
+		unset($_SESSION['added_tenure']);
+		
+	}
+	?>
 
 </body>
 </html>

@@ -8,9 +8,9 @@
 <body>
 
 <div class="topnav">
-  <a class="active" href="#home">Home</a>
+  <a class="active" >Home</a>
   <a href="create_firm_form.php">Add values to tables</a>
-  <a href="#contact">Display tables</a>
+  <a href="display_firms.php">Display tables</a>
   <a href="#about">Edit tables</a>
   <a href="#about">Log out</a>
 </div>

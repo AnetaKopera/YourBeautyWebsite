@@ -33,9 +33,25 @@
 	<label for="idWorkSchedule"> Id work schedule: </label>
 	<input type="text" id = "idWorkSchedule" name = "idWorkSchedule"><br>
 
-	<input type="submit" value="Create worker">
+	<button class="button" type="submit"><span>Create worker</span></button>
 	</form>
 </div>
+
+<div id="snackbar">Worker successfull added!</div>
+	
+	<?php
+	
+	if(isset($_SESSION['added_worker']) && ($_SESSION['added_worker']==true))
+	{
+		
+		echo '<script type="text/javascript">',
+		'var x = document.getElementById("snackbar"); x.className = "show"; setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);',
+		'</script>';
+		
+		unset($_SESSION['added_worker']);
+		
+	}
+	?>
 
 </body>
 </html>

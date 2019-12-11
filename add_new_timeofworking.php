@@ -154,23 +154,16 @@ $statement->bindParam(":sundayStop", $sundayStop, PDO::PARAM_STR);
 $statement->execute();
 
 
-
-  if ($query) 
-  {
-        // successfully inserted into database
-        $response["success"] = 1;
-        $response["message"] = "Time of working created.";
- 
-        // echoing JSON response
-        echo json_encode($response);
-    } else 
-	{
-        // failed to insert row
-        $response["success"] = 0;
-        $response["message"] = "Error in crete time of working";
- 
-        // echoing JSON response
-        echo json_encode($response);
+  if ($query) {
+		$_SESSION['added_timeofworking']=true;
+		header("location: create_timeofworking_form.php");
+		exit();
+    } 
+	else {
+		$_SESSION['added_timeofworking']=false;
+		header("location: create_timeofworking_form.php");
+		exit();
     }
+
 
 ?>

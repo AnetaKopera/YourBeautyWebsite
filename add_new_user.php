@@ -101,32 +101,15 @@ $statement->bindParam(":bank_account_number", $bank_account_number, PDO::PARAM_I
 $statement->execute();
 
 
-
-//tutaj  odesłac trzeba bedzie jsonem do androida czy sie udało
-/*if ($statement->rowCount() > 0)
-{
-    echo "<p>Record successfully added to database.</p>";
-}
-else
-{
-    echo "<p>Record not added to database.</p>";
-}*/
-
-
-  if ($query) {
-        // successfully inserted into database
-        $response["success"] = 1;
-        $response["message"] = "Product successfully created.";
- 
-        // echoing JSON response
-        echo json_encode($response);
-    } else {
-        // failed to insert row
-        $response["success"] = 0;
-        $response["message"] = "Oops! An error occurred.";
- 
-        // echoing JSON response
-        echo json_encode($response);
+ if ($query) {
+		$_SESSION['added_user']=true;
+		header("location: create_user_form.php");
+		exit();
+    } 
+	else {
+		$_SESSION['added_user']=false;
+		header("location: create_user_form.php");
+		exit();
     }
 
 ?>

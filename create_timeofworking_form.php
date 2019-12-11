@@ -69,12 +69,34 @@
 	<label for="sundayStop">Sunday stop: </label>
 	<input type="time" id = "sundayStop" name = "sundayStop"><br>
 
-
-			  
-	<input type="submit" value="Create time of working">
+	<button class="button" type="submit"><span>Create time of working</span></button>
 	</form>
 
+
 </div>
+
+<div id="snackbar">Time of working successfull added!</div>
+	
+	<script>
+	function MyFunction()
+	{
+		var x = document.getElementById("snackbar"); 
+		x.className = "show";
+		setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+	}
+	</script>
+	<?php
+	if(isset($_SESSION['added_timeofworking']) && ($_SESSION['added_timeofworking']==true))
+	{
+	
+		echo '<script type="text/javascript">',
+		'MyFunction();',
+		'</script>';
+		
+		unset($_SESSION['added_timeofworking']);
+		
+	}
+	?>
 
 </body>
 </html>

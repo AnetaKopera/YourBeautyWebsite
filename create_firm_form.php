@@ -54,7 +54,7 @@
 	<label for="category">Category: </label>
 	<input type="text" id = "category" name = "category"><br>
 			  
-	<input type="submit" id="butonek" value="Create firm">
+	<button class="button" type="submit"><span>Create firm</span></button>
 	</form>
 	
 	<div id="snackbar">Firm successfull added!</div>
@@ -68,14 +68,14 @@
 	}
 	</script>
 	<?php
-	if(isset($_SESSION['added_user']) && ($_SESSION['added_user']==true))
+	if(isset($_SESSION['added_firm']) && ($_SESSION['added_firm']==true))
 	{
 	
 		echo '<script type="text/javascript">',
 		'MyFunction();',
 		'</script>';
 		
-		unset($_SESSION['added_user']);
+		unset($_SESSION['added_firm']);
 		
 	}
 	?>

@@ -75,24 +75,12 @@ $statement->execute();
 
 
   if ($query) {
-        // successfully inserted into database
-        $response["success"] = 1;
-        $response["message"] = "Firm created.";
- 
-		$_SESSION['added_user']=true;
-        echo json_encode($response);
+		$_SESSION['added_firm']=true;
 		header("location: create_firm_form.php");
 		exit();
     } 
 	else {
-		
-        $response["success"] = 0;
-        $response["message"] = "Error in create firm";
-		
-		$_SESSION['added_user']=false;
- 
-        // echoing JSON response
-        echo json_encode($response);
+		$_SESSION['added_firm']=false;
 		header("location: create_firm_form.php");
 		exit();
     }

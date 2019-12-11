@@ -41,7 +41,7 @@
 	<label for="idFirm">Id firm: </label>
 	<input type="text" id = "idFirm" name = "idFirm"><br>
 			  
-	<input type="submit" value="Create service">
+	<button class="button" type="submit"><span>Create service</span></button>
 	</form>
 	
 	<div id="snackbar">Service successfull added!</div>

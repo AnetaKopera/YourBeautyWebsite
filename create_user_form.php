@@ -50,9 +50,25 @@
 	<label for="bank_account_number"> Bank account number: </label>
 	<input type="text" id = "bank_account_number" name = "bank_account_number"><br>
 			  
-	<input type="submit" value="Create user">
+	<button class="button" type="submit"><span>Create user</span></button>
 	</form>
 </div>
+
+<div id="snackbar">User successfull added!</div>
+	
+	<?php
+	
+	if(isset($_SESSION['added_user']) && ($_SESSION['added_firm']==true))
+	{
+		
+		echo '<script type="text/javascript">',
+		'var x = document.getElementById("snackbar"); x.className = "show"; setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);',
+		'</script>';
+		
+		unset($_SESSION['added_firm']);
+		
+	}
+	?>
 
 </body>
 </html>
