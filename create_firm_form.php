@@ -1,11 +1,9 @@
 <?php 
-	session_start();
-	
-	/*if ((isset($_SESSION['zalogowany'])) && ($_SESSION['zalogowany']==true))
-	{
-		header('Location: login.php');
-		exit();
-	}*/
+  session_start();
+  if(!isset($_SESSION['admin']))
+  {
+    header("location: login_form.php");
+  }
 ?>
 
 <!DOCTYPE html>

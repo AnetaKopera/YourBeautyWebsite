@@ -23,6 +23,12 @@ table tr{
 	text-align:center;
 }
 
+
+.error{
+  font-size: 20px;
+  color: #ff0000;
+}
+
 table td{
 	padding:10px;
 }
@@ -66,10 +72,6 @@ table td{
   opacity: 1;
   right: 0;
 }
-
-
-
-
 
 
 input[type=text] {
@@ -116,24 +118,19 @@ label
 
 
 
-
-
-
-
-/* The snackbar - position it at the bottom and in the middle of the screen */
 #snackbar {
-  visibility: hidden; /* Hidden by default. Visible on click */
-  min-width: 250px; /* Set a default minimum width */
-  margin-left: -125px; /* Divide value of min-width by 2 */
-  background-color: #333; /* Black background color */
-  color: #fff; /* White text color */
-  text-align: center; /* Centered text */
-  border-radius: 2px; /* Rounded borders */
-  padding: 16px; /* Padding */
-  position: fixed; /* Sit on top of the screen */
-  z-index: 1; /* Add a z-index if needed */
-  left: 50%; /* Center the snackbar */
-  bottom: 30px; /* 30px from the bottom */
+  visibility: hidden; 
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px; 
+  padding: 16px; 
+  position: fixed; 
+  z-index: 1;
+  left: 50%; 
+  bottom: 30px;
 }
 
 /* Show the snackbar when clicking on a button (class added with JavaScript) */
