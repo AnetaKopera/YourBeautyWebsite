@@ -2,7 +2,8 @@
   session_start();
   if(!isset($_SESSION['admin']))
   {
-    header("location: login_form.php");
+	header("location: login_form.php");
+	exit();
   }
 ?>
 
@@ -15,11 +16,7 @@
 <link rel="stylesheet" href="style.css">
 
 </head>
-
-<body >
-
-
-
+<body>
 
 <div class="topnav">
   <a href="mainMenu.php">Home</a>
@@ -36,31 +33,75 @@
 
 	<label for="nameOfCompany">Name of company: </label>
 	<input type="text" id = "nameOfCompany" name = "nameOfCompany"><br>
+	<?php 
+		if(isset($_SESSION['error_nameOfCompany'] ) )
+		{
+			echo "<p class='error'>" .$_SESSION['error_nameOfCompany'] ."</p>";
+			unset($_SESSION['error_nameOfCompany']);
+		}
+	?>
 
 	<label for="idOwner">Id owner: </label>
 	<input type="text" id = "idOwner" name = "idOwner"><br>
+	<?php 
+		if(isset($_SESSION['error_idOwner'] ) )
+		{
+			echo "<p class='error'>" .$_SESSION['error_idOwner'] ."</p>";
+			unset($_SESSION['error_idOwner']);
+		}
+	?>
 
 
 	<label for="city">City: </label>
 	<input type="text" id = "city" name = "city"><br>
+	<?php 
+		if(isset($_SESSION['error_city'] ) )
+		{
+			echo "<p class='error'>" .$_SESSION['error_city'] ."</p>";
+			unset($_SESSION['error_city']);
+		}
+	?>
 
 
 	<label for="street">Street: </label>
 	<input type="text" id = "street" name = "street"><br>
+	<?php 
+		if(isset($_SESSION['error_street'] ) )
+		{
+			echo "<p class='error'>" .$_SESSION['error_street'] ."</p>";
+			unset($_SESSION['error_street']);
+		}
+	?>
 
 
 	<label for="category">Category: </label>
 	<input type="text" id = "category" name = "category"><br>
+	<?php 
+		if(isset($_SESSION['error_category'] ) )
+		{
+			echo "<p class='error'>" .$_SESSION['error_category'] ."</p>";
+			unset($_SESSION['error_category']);
+		}
+	?>
 			  
 	<button class="button" type="submit"><span>Create firm</span></button>
-	</form>
 	
-	<div id="snackbar">Firm successfull added!</div>
+</form>
+	
+	<div id="snackbar">Firm succesfully added!</div>
+	<div id="snackbar2">Firm not added!</div>
 	
 	<script>
-	function MyFunction()
+	function Positive()
 	{
 		var x = document.getElementById("snackbar"); 
+		x.className = "show";
+		setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+	}
+
+	function Negative()
+	{
+		var x = document.getElementById("snackbar2"); 
 		x.className = "show";
 		setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 	}
@@ -68,13 +109,19 @@
 	<?php
 	if(isset($_SESSION['added_firm']) && ($_SESSION['added_firm']==true))
 	{
-	
 		echo '<script type="text/javascript">',
-		'MyFunction();',
+		'Positive();',
 		'</script>';
-		
 		unset($_SESSION['added_firm']);
 		
+	}
+
+	if(isset($_SESSION['added_firm']) && ($_SESSION['added_firm']==false))
+	{
+		echo '<script type="text/javascript">',
+		'Negative();',
+		'</script>';
+		unset($_SESSION['added_firm']);	
 	}
 	?>
 	
