@@ -8,7 +8,7 @@ if(!isset($_SESSION['admin']) )
 }
 
 $nameOfCompany = ltrim(rtrim(filter_input(INPUT_POST, "nameOfCompany", FILTER_SANITIZE_STRING)));
-if (empty($nameOfCompany))
+if (empty($nameOfCompany)  || (!filter_var($nameOfCompany, FILTER_SANITIZE_STRING)))
 {
 	$_SESSION['error_nameOfCompany'] = "Empty name of company";
 	header("location: create_firm_form.php");
@@ -16,7 +16,7 @@ if (empty($nameOfCompany))
 }
 
 $idOwner = ltrim(rtrim(filter_input(INPUT_POST, "idOwner", FILTER_SANITIZE_STRING)));
-if (empty($idOwner))
+if (empty($idOwner)  || (!filter_var($idOwner, FILTER_SANITIZE_STRING)))
 {
 	$_SESSION['error_idOwner'] = "Empty idOwner";
 	header("location: create_firm_form.php");
@@ -25,7 +25,7 @@ if (empty($idOwner))
 
 
 $city = ltrim(rtrim(filter_input(INPUT_POST, "city", FILTER_SANITIZE_STRING)));
-if (empty($city))
+if (empty($city)  || (!filter_var($city, FILTER_SANITIZE_STRING)))
 {
 	$_SESSION['error_city'] = "Empty city";
 	header("location: create_firm_form.php");
@@ -34,7 +34,7 @@ if (empty($city))
 
 
 $street = ltrim(rtrim(filter_input(INPUT_POST, "street", FILTER_SANITIZE_STRING)));
-if (empty($street))
+if (empty($street)  || (!filter_var($street, FILTER_SANITIZE_STRING)))
 {
 	$_SESSION['error_street'] = "Empty street";
 	header("location: create_firm_form.php");
@@ -42,7 +42,7 @@ if (empty($street))
 }
 
 $category = ltrim(rtrim(filter_input(INPUT_POST, "category", FILTER_SANITIZE_STRING)));
-if (empty($category))
+if (empty($category) || (!filter_var($category, FILTER_SANITIZE_STRING)))
 {
 	$_SESSION['error_category'] = "Empty category";
 	header("location: create_firm_form.php");

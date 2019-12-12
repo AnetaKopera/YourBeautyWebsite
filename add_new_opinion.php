@@ -1,41 +1,35 @@
 <?php 
 
-
-$response = array();
+session_start();
+if(!isset($_SESSION['admin']) )
+{
+  header("location: login.php");
+  exit();
+}
 
 $idUser = ltrim(rtrim(filter_input(INPUT_POST, "idUser", FILTER_SANITIZE_STRING)));
 if (empty($idUser))
 {
-	$response["success"] = 0;
-    $response["message"] = "Error in attribute idUser";
-    echo json_encode($response);
+	$_SESSION['error_idUser'] = "Empty id user";
+	//header("location: create_firm_form.php");
 	exit();
 }
 
 $idFirm = ltrim(rtrim(filter_input(INPUT_POST, "idFirm", FILTER_SANITIZE_STRING)));
 if (empty($idFirm))
 {
-	$response["success"] = 0;
-    $response["message"] = "Errror in attribute idFirm";
-    echo json_encode($response);
 	exit();
 }
 
 $idService = ltrim(rtrim(filter_input(INPUT_POST, "idService", FILTER_SANITIZE_STRING)));
 if ((empty($idService)) || (!filter_var($idService, FILTER_SANITIZE_STRING)))
 {
-	$response["success"] = 0;
-    $response["message"] = "Error in attribute idService";
-    echo json_encode($response);
 	exit();
 }
 
 $opinion = ltrim(rtrim(filter_input(INPUT_POST, "opinion", FILTER_SANITIZE_STRING)));
 if ((empty($opinion)) || (!filter_var($opinion, FILTER_SANITIZE_STRING)))
 {
-	$response["success"] = 0;
-    $response["message"] = "Error in attribute opinion";
-    echo json_encode($response);
 	exit();
 }
 
