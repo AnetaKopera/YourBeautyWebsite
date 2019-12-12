@@ -1,6 +1,5 @@
 # YourBeautyWebsite
 Panel administratora dla aplikacji mobilnej YourBeauty.
 
-//Poprawić sprawdzanie (sprawdzić czy jest dobrze) czy kwerenda się wykonała
-
+Możliwe że nie wszystkie dodawania działają jak powinny w najbliższym czasie posprawdzam je.
 //Dodawanie opini dać adminowi?
