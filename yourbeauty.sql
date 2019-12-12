@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 11 Gru 2019, 21:14
+-- Czas generowania: 12 Gru 2019, 23:09
 -- Wersja serwera: 10.4.6-MariaDB
 -- Wersja PHP: 7.3.9
 
@@ -48,7 +48,8 @@ INSERT INTO `firms` (`id`, `nameOfCompany`, `idOwner`, `city`, `street`, `catego
 (4, 'Paznokcie', 8, 'Opoczno', 'Piotrkowska 78', 'Nails'),
 (5, 'Perfect', 8, 'Warszawa', 'Badowska 67', 'Estetic Medicine'),
 (7, 'Paznokcie', 8, 'Warszawa', 'Gorska 677', 'Nails'),
-(8, 'Lakierex', 8, 'Chojne', 'Główna 118', 'Nails');
+(8, 'Lakierex', 8, 'Chojne', 'Główna 118', 'Nails'),
+(14, 'Zdrowe włosy', 8, 'Warszawa', 'Badowska 67', 'Hairdresser');
 
 -- --------------------------------------------------------
 
@@ -197,6 +198,13 @@ CREATE TABLE `visits` (
   `idClient` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
+--
+-- Zrzut danych tabeli `visits`
+--
+
+INSERT INTO `visits` (`id`, `idService`, `dateVisit`, `hourVisit`, `payInAdvance`, `idWorker`, `idClient`) VALUES
+(1, 2, '2020-03-20', '12:00:00', 'Y', 1, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -291,7 +299,7 @@ ALTER TABLE `workers`
 -- AUTO_INCREMENT dla tabeli `firms`
 --
 ALTER TABLE `firms`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT dla tabeli `opinions`
@@ -327,7 +335,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT dla tabeli `visits`
 --
 ALTER TABLE `visits`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT dla tabeli `workers`
