@@ -2,13 +2,12 @@
 session_start();
 ?>
 
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Services</title>
+<title>Visits</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -18,12 +17,12 @@ session_start();
 <div class="topnav">
   <a href="mainMenu.php">Home</a>
   <a href="display_firms.php">Display firms</a>
-  <a class="active" >Display services</a>
+  <a href="display_services.php" >Display services</a>
   <a href="display_opinions.php">Display opinions</a>
   <a href="display_tenure.php" >Display tenure</a>
-  <a href="display_timeofworking.php">Display time of working</a>
+  <a href="display_timeofworking.php" >Display time of working</a>
   <a href="display_users.php">Display users</a>
-  <a href="display_visits.php">Display visits</a>
+  <a class="active" >Display visits</a>
   <a href="display_workers.php">Display workers</a>
 </div>
 
@@ -45,7 +44,7 @@ $dbConnection->query('SET CHARSET utf8');
 
 /* Perform Query */
 
-$query = "SELECT id, typeOfService, description, price, timeofservice, idFirm FROM services";
+$query = "SELECT * FROM visits";
 $statement = $dbConnection->prepare($query);
 $statement->execute();
 
@@ -55,12 +54,14 @@ if ($statement->rowCount() > 0)
 {
     echo "<table>";
     $result = $statement->fetchAll(PDO::FETCH_OBJ);
-	echo "<th>Id</th> <th>Type Of Service</th><th>Description</th><th>Price</th><th>Time of service</th><th>Id firm</th> ";
+	echo "<th>Id</th> <th>Id service</th><th>Date of visit</th><th>Hour of visit</th><th>Pay in advance</th><th>Id worker</th> ";
+	echo "<th>Id client</th>";
     foreach ($result as $row)
     {
         echo "<tr>";
-        echo "<td>" . $row->id . "</td><td>" . $row->typeOfService . "</td><td>" . $row->description . "</td>
-		<td>" . $row->price . "</td><td>" . $row->timeofservice . "</td><td>"  . $row->idFirm . "</td>";
+        echo "<td>" . $row->id . "</td><td>" . $row->idService . "</td><td>" . $row->dateVisit . "</td>
+		<td>" . $row->hourVisit . "</td><td>" . $row->payInAdvance . "</td><td>"  . $row->idWorker . "</td>
+		<td>" . $row->idClient . "</td>";
       
         echo "</tr>";
     }
@@ -68,9 +69,6 @@ if ($statement->rowCount() > 0)
 }
 
 echo "<p>" . $statement->rowCount() . " records found.</p>";
-
-
-
 
 ?> 
 

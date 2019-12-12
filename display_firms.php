@@ -20,6 +20,11 @@ session_start();
   <a class="active" >Display firms</a>
   <a href="display_services.php">Display services</a>
   <a href="display_opinions.php">Display opinions</a>
+  <a href="display_tenure.php" >Display tenure</a>
+  <a href="display_timeofworking.php">Display time of working</a>
+  <a href="display_users.php">Display users</a>
+  <a href="display_visits.php">Display visits</a>
+  <a href="display_workers.php">Display workers</a>
 </div>
 
 <?php
