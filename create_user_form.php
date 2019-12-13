@@ -2,7 +2,8 @@
   session_start();
   if(!isset($_SESSION['admin']))
   {
-    header("location: login_form.php");
+	header("location: login_form.php");
+	exit();
   }
 ?>
 
@@ -33,50 +34,136 @@
 
 	<label for="surname">Surname: </label>
 	<input type="text" id = "surname" name = "surname"><br>
+	<?php 
+		if(isset($_SESSION['error_surname'] ) )
+		{
+			echo "<p class='error'>" .$_SESSION['error_surname'] ."</p>";
+			unset($_SESSION['error_surname']);
+		}
+	?>
 
 	<label for="name">Name: </label>
 	<input type="text" id = "name" name = "name"><br>
+	<?php 
+		if(isset($_SESSION['error_name'] ) )
+		{
+			echo "<p class='error'>" .$_SESSION['error_name'] ."</p>";
+			unset($_SESSION['error_name']);
+		}
+	?>
 
 	<label for="name2">Second name: </label>
 	<input type="text" id = "name2" name = "name2"><br>
+	<?php 
+		if(isset($_SESSION['error_name2'] ) )
+		{
+			echo "<p class='error'>" .$_SESSION['error_name2'] ."</p>";
+			unset($_SESSION['error_name2']);
+		}
+	?>
 
 	<label for="date_of_birth">Date of birth: </label>
 	<input type="text" id = "date_of_birth" name = "date_of_birth"><br>
+	<?php 
+		if(isset($_SESSION['error_date_of_birth'] ) )
+		{
+			echo "<p class='error'>" .$_SESSION['error_date_of_birth'] ."</p>";
+			unset($_SESSION['error_date_of_birth']);
+		}
+	?>
 
 	<label for="gender">Gender: </label>
 	<input type="text" id = "gender" name = "gender"><br>
+	<?php 
+		if(isset($_SESSION['error_gender'] ) )
+		{
+			echo "<p class='error'>" .$_SESSION['error_gender'] ."</p>";
+			unset($_SESSION['error_gender']);
+		}
+	?>
 
 	<label for="account_type">Account type: </label>
 	<input type="text" id = "account_type" name = "account_type"><br>
+	<?php 
+		if(isset($_SESSION['error_account_type'] ) )
+		{
+			echo "<p class='error'>" .$_SESSION['error_account_type'] ."</p>";
+			unset($_SESSION['error_account_type']);
+		}
+	?>
 
 	<label for="email"> Email: </label>
 	<input type="text" id = "email" name = "email"><br>
+	<?php 
+		if(isset($_SESSION['error_email'] ) )
+		{
+			echo "<p class='error'>" .$_SESSION['error_email'] ."</p>";
+			unset($_SESSION['error_email']);
+		}
+	?>
 
 	<label for="password"> Password: </label>
-	<input type="text" id = "password" name = "password"><br>
+	<input type="password" id = "password" name = "password"><br>
+	<?php 
+		if(isset($_SESSION['error_password'] ) )
+		{
+			echo "<p class='error'>" .$_SESSION['error_password'] ."</p>";
+			unset($_SESSION['error_password']);
+		}
+	?>
 
 	<label for="bank_account_number"> Bank account number: </label>
 	<input type="text" id = "bank_account_number" name = "bank_account_number"><br>
+	<?php 
+		if(isset($_SESSION['error_bank_account_number'] ) )
+		{
+			echo "<p class='error'>" .$_SESSION['error_bank_account_number'] ."</p>";
+			unset($_SESSION['error_bank_account_number']);
+		}
+	?>
 			  
 	<button class="button" type="submit"><span>Create user</span></button>
 	</form>
 </div>
 
-<div id="snackbar">User successfull added!</div>
+
 	
-	<?php
-	
-	if(isset($_SESSION['added_user']) && ($_SESSION['added_firm']==true))
+<script>
+	function TextPositive()
 	{
-		
-		echo '<script type="text/javascript">',
-		'var x = document.getElementById("snackbar"); x.className = "show"; setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);',
+		document.getElementById('snackbar').textContent = "User successfully aded.";
+	}
+	function TextNegative()
+	{
+		document.getElementById('snackbar').textContent = "User NOT aded.";
+	}
+</script>
+
+	
+<div id="snackbar"></div>	
+<script>
+	function SnackbarShow()
+	{
+		var x = document.getElementById("snackbar"); 
+		x.className = "show";
+		setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+	}
+</script>
+
+<?php
+	if(isset($_SESSION['added_user']) )
+	{
+		echo '<script>';
+		if($_SESSION['added_user'] ==true) 		{ echo 'TextPositive();';}
+		else 										{ echo 'TextNegative();';}
+		echo 'SnackbarShow();',
 		'</script>';
-		
-		unset($_SESSION['added_firm']);
+		unset($_SESSION['added_user']);
 		
 	}
-	?>
+?>
+
+
 
 </body>
 </html>

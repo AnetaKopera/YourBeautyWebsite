@@ -19,6 +19,7 @@
 <body>
 
 <div id="logowanie">
+<div id="logowanie-container">
 <img id="logo" src="logoyourbeauty.png" alt="Logo your beauty"><br>
 <div class="formularz">
 	<form action="login.php" method="post">
@@ -54,6 +55,7 @@
 	</form>
 	
 </div>
+	</div>
 	</div>
 
 </body>
