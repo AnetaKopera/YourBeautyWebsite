@@ -10,15 +10,15 @@ if(!isset($_SESSION['admin']) )
 $nameOfCompany = ltrim(rtrim(filter_input(INPUT_POST, "nameOfCompany", FILTER_SANITIZE_STRING)));
 if (empty($nameOfCompany)  || (!filter_var($nameOfCompany, FILTER_SANITIZE_STRING)))
 {
-	$_SESSION['error_nameOfCompany'] = "Empty name of company";
+	$_SESSION['error_nameOfCompany'] = "Empty or error in  name of company";
 	header("location: create_firm_form.php");
 	exit();
 }
 
-$idOwner = ltrim(rtrim(filter_input(INPUT_POST, "idOwner", FILTER_SANITIZE_STRING)));
-if (empty($idOwner)  || (!filter_var($idOwner, FILTER_SANITIZE_STRING)))
+$idOwner = ltrim(rtrim(filter_input(INPUT_POST, "idOwner", FILTER_VALIDATE_INT)));
+if (empty($idOwner)  || (!filter_var($idOwner, FILTER_VALIDATE_INT)))
 {
-	$_SESSION['error_idOwner'] = "Empty idOwner";
+	$_SESSION['error_idOwner'] = "Empty or error in id Owner";
 	header("location: create_firm_form.php");
 	exit();
 }
@@ -27,7 +27,7 @@ if (empty($idOwner)  || (!filter_var($idOwner, FILTER_SANITIZE_STRING)))
 $city = ltrim(rtrim(filter_input(INPUT_POST, "city", FILTER_SANITIZE_STRING)));
 if (empty($city)  || (!filter_var($city, FILTER_SANITIZE_STRING)))
 {
-	$_SESSION['error_city'] = "Empty city";
+	$_SESSION['error_city'] = "Empty or error in city";
 	header("location: create_firm_form.php");
 	exit();
 }
@@ -36,7 +36,7 @@ if (empty($city)  || (!filter_var($city, FILTER_SANITIZE_STRING)))
 $street = ltrim(rtrim(filter_input(INPUT_POST, "street", FILTER_SANITIZE_STRING)));
 if (empty($street)  || (!filter_var($street, FILTER_SANITIZE_STRING)))
 {
-	$_SESSION['error_street'] = "Empty street";
+	$_SESSION['error_street'] = "Empty or error in street";
 	header("location: create_firm_form.php");
 	exit();
 }
@@ -44,7 +44,7 @@ if (empty($street)  || (!filter_var($street, FILTER_SANITIZE_STRING)))
 $category = ltrim(rtrim(filter_input(INPUT_POST, "category", FILTER_SANITIZE_STRING)));
 if (empty($category) || (!filter_var($category, FILTER_SANITIZE_STRING)))
 {
-	$_SESSION['error_category'] = "Empty category";
+	$_SESSION['error_category'] = "Empty or error in category";
 	header("location: create_firm_form.php");
 	exit();
 }
