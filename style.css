@@ -27,6 +27,8 @@ table tr{
 }
 
 .error{
+  text-decoration: underline;
+  font-style: italic;
   font-size: 20px;
   color: #ff0000;
 }
@@ -36,7 +38,7 @@ table td{
 }
 
 .button{
-  border-radius: 2px;
+  border-radius: 10px;
   background-color: #ced9f0;
   border-color: #5588ed;
   color: #000000;
@@ -75,6 +77,7 @@ table td{
 }
 
 input[type=text], input[type=password], input[type=time]  {
+  border-radius: 10px;
   border: 2px ridge #e9e07f;
 }
 
