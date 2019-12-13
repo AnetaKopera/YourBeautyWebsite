@@ -18,10 +18,10 @@
 </head>
 <body>
 
-
+<div id="logowanie">
+<img id="logo" src="logo.png" alt="Logo your beauty"><br>
 <div class="formularz">
 	<form action="login.php" method="post">
-
 	<label for="email">Login: </label>
 	<input type="text" id = "login" name = "login"><br>
 	<?php 
@@ -54,6 +54,7 @@
 	</form>
 	
 </div>
+	</div>
 
 </body>
 </html>

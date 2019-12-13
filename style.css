@@ -111,6 +111,16 @@ label
   background-color: #5588ed;
   color: white;
 }
+#logowanie{
+  text-align: center;
+}
+
+#logo{
+  width: 20%;
+  height: 20%;
+  margin-top: 20px;
+
+}
 
 #snackbar {
   visibility: hidden; 
