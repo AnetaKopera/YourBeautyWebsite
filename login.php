@@ -27,7 +27,7 @@ $dbConnection = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUsername, $dbPas
 $dbConnection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);  
 $dbConnection->query('SET CHARSET utf8');
 
-$query = "SELECT id FROM `users` WHERE email= :email AND  password= :password ";
+$query = "SELECT id FROM `users` WHERE email= :email AND  password= :password AND userType = 'A' ";
 $statement = $dbConnection->prepare($query);
 $statement->bindParam(":email", $login, PDO::PARAM_STR);
 $statement->bindParam(":password", $password, PDO::PARAM_STR);
