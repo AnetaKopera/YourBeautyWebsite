@@ -1,137 +1,130 @@
 <?php 
-
-
-$response = array();
-
-$mondayStart = ltrim(rtrim(filter_input(INPUT_POST, "mondayStart", FILTER_SANITIZE_STRING)));
-if (empty($mondayStart))
+session_start();
+if(!isset($_SESSION['admin']))
 {
-	$response["success"] = 0;
-    $response["message"] = "Errror in attribute mondayStart";
-    echo json_encode($response);
-	exit();
+  header("location: login_form.php");
+  exit();
 }
 
+$mondayStart = ltrim(rtrim(filter_input(INPUT_POST, "mondayStart", FILTER_SANITIZE_STRING)));
 $mondayStop = ltrim(rtrim(filter_input(INPUT_POST, "mondayStop", FILTER_SANITIZE_STRING)));
-if (empty($mondayStop))
+if (!empty($mondayStart) &&  (empty($mondayStop)))
 {
-	$response["success"] = 0;
-    $response["message"] = "Errror in attribute mondayStop";
-    echo json_encode($response);
+	$_SESSION['error_monday_stop'] = "Empty monday stop";
+	header("location: create_timeofworking_form.php");
+	exit();
+}
+if (empty($mondayStart) &&  (!empty($mondayStop)))
+{
+	$_SESSION['error_monday_start'] = "Empty monday start";
+	header("location: create_timeofworking_form.php");
 	exit();
 }
 
 $tuesdayStart = ltrim(rtrim(filter_input(INPUT_POST, "tuesdayStart", FILTER_SANITIZE_STRING)));
-if (empty($tuesdayStart))
+$tuesdayStop = ltrim(rtrim(filter_input(INPUT_POST, "tuesdayStop", FILTER_SANITIZE_STRING)));
+if (!empty($tuesdayStart) &&  (empty($tuesdayStop)))
 {
-	$response["success"] = 0;
-    $response["message"] = "Errror in attribute tuesdayStart";
-    echo json_encode($response);
+	$_SESSION['error_tuesday_stop'] = "Empty tuesday stop";
+	header("location: create_timeofworking_form.php");
 	exit();
 }
- 
-$tuesdayStop = ltrim(rtrim(filter_input(INPUT_POST, "tuesdayStop", FILTER_SANITIZE_STRING)));
-if (empty($tuesdayStop))
+if (empty($tuesdayStart) &&  (!empty($tuesdayStop)))
 {
-	$response["success"] = 0;
-    $response["message"] = "Errror in attribute tuesdayStop";
-    echo json_encode($response);
+	$_SESSION['error_tuesday_start'] = "Empty tuesday start";
+	header("location: create_timeofworking_form.php");
 	exit();
-} 
+}
 
 $wednesdayStart = ltrim(rtrim(filter_input(INPUT_POST, "wednesdayStart", FILTER_SANITIZE_STRING)));
-if (empty($wednesdayStart))
+$wednesdayStop = ltrim(rtrim(filter_input(INPUT_POST, "wednesdayStop", FILTER_SANITIZE_STRING)));
+if (!empty($wednesdayStart) &&  (empty($wednesdayStop)))
 {
-	$response["success"] = 0;
-    $response["message"] = "Errror in attribute wednesdayStart";
-    echo json_encode($response);
+	$_SESSION['error_wednesday_stop'] = "Empty wednesday stop";
+	header("location: create_timeofworking_form.php");
 	exit();
 }
-
-$wednesdayStop = ltrim(rtrim(filter_input(INPUT_POST, "wednesdayStop", FILTER_SANITIZE_STRING)));
-if (empty($wednesdayStop))
+if (empty($wednesdayStart) &&  (!empty($wednesdayStop)))
 {
-	$response["success"] = 0;
-    $response["message"] = "Errror in attribute wednesdayStop";
-    echo json_encode($response);
+	$_SESSION['error_wednesday_start'] = "Empty wednesday start";
+	header("location: create_timeofworking_form.php");
 	exit();
 }
 
 $thursdayStart = ltrim(rtrim(filter_input(INPUT_POST, "thursdayStart", FILTER_SANITIZE_STRING)));
-if (empty($thursdayStart))
+$thursdayStop = ltrim(rtrim(filter_input(INPUT_POST, "thursdayStop", FILTER_SANITIZE_STRING)));
+if (!empty($thursdayStart) &&  (empty($thursdayStop)))
 {
-	$response["success"] = 0;
-    $response["message"] = "Errror in attribute thursdayStart";
-    echo json_encode($response);
+	$_SESSION['error_thursday_stop'] = "Empty thursday stop";
+	header("location: create_timeofworking_form.php");
 	exit();
 }
-$thursdayStop = ltrim(rtrim(filter_input(INPUT_POST, "thursdayStop", FILTER_SANITIZE_STRING)));
-if (empty($thursdayStop))
+if (empty($thursdayStart) &&  (!empty($thursdayStop)))
 {
-	$response["success"] = 0;
-    $response["message"] = "Errror in attribute thursdayStop";
-    echo json_encode($response);
+	$_SESSION['error_thursday_start'] = "Empty thursday start";
+	header("location: create_timeofworking_form.php");
 	exit();
 }
 
 $fridayStart = ltrim(rtrim(filter_input(INPUT_POST, "fridayStart", FILTER_SANITIZE_STRING)));
-if (empty($fridayStart))
+$fridayStop = ltrim(rtrim(filter_input(INPUT_POST, "fridayStop", FILTER_SANITIZE_STRING)));
+if (!empty($fridayStart) &&  (empty($fridayStop)))
 {
-	$response["success"] = 0;
-    $response["message"] = "Errror in attribute fridayStart";
-    echo json_encode($response);
+	$_SESSION['error_friday_stop'] = "Empty friday stop";
+	header("location: create_timeofworking_form.php");
 	exit();
 }
-
-$fridayStop = ltrim(rtrim(filter_input(INPUT_POST, "fridayStop", FILTER_SANITIZE_STRING)));
-if (empty($fridayStop))
+if (empty($fridayStart) &&  (!empty($fridayStop)))
 {
-	$response["success"] = 0;
-    $response["message"] = "Errror in attribute fridayStop";
-    echo json_encode($response);
+	$_SESSION['error_friday_start'] = "Empty friday start";
+	header("location: create_timeofworking_form.php");
 	exit();
 }
 
 $saturdayStart = ltrim(rtrim(filter_input(INPUT_POST, "saturdayStart", FILTER_SANITIZE_STRING)));
-if (empty($saturdayStart))
+$saturdayStop = ltrim(rtrim(filter_input(INPUT_POST, "saturdayStop", FILTER_SANITIZE_STRING)));
+if (!empty($saturdayStart) &&  (empty($saturdayStop)))
 {
-	$response["success"] = 0;
-    $response["message"] = "Errror in attribute saturdayStart";
-    echo json_encode($response);
+	$_SESSION['error_saturday_stop'] = "Empty saturday stop";
+	header("location: create_timeofworking_form.php");
 	exit();
 }
-
-$saturdayStop = ltrim(rtrim(filter_input(INPUT_POST, "saturdayStop", FILTER_SANITIZE_STRING)));
-if (empty($saturdayStop))
+if (empty($saturdayStart) &&  (!empty($saturdayStop)))
 {
-	$response["success"] = 0;
-    $response["message"] = "Errror in attribute saturdayStop";
-    echo json_encode($response);
+	$_SESSION['error_saturday_start'] = "Empty saturday start";
+	header("location: create_timeofworking_form.php");
 	exit();
 }
 
 $sundayStart = ltrim(rtrim(filter_input(INPUT_POST, "sundayStart", FILTER_SANITIZE_STRING)));
-if (empty($sundayStart))
+$sundayStop = ltrim(rtrim(filter_input(INPUT_POST, "sundayStop", FILTER_SANITIZE_STRING)));
+if (!empty($sundayStart) && (empty($sundayStop)))
 {
-	$response["success"] = 0;
-    $response["message"] = "Errror in attribute sundayStart";
-    echo json_encode($response);
+	$_SESSION['error_sunday_stop'] = "Empty sunday stop";
+	header("location: create_timeofworking_form.php");
+	exit();
+}
+if (empty($sundayStart) &&  (!empty($sundayStop)))
+{
+	$_SESSION['error_sunday_start'] = "Empty sunday start";
+	header("location: create_timeofworking_form.php");
+	exit();
+}
+if(empty($mondayStart) && empty($mondayStop) && empty($tuesdayStart) && empty($tuesdayStop) 
+	&& empty($wednesdayStart) && empty($wednesdayStop) && empty($thursdayStart) && empty($thursdayStop) && empty($fridayStart) 
+	&& empty($fridayStop) && empty($saturdayStart) && empty($saturdayStop) && empty($sundayStart) && empty($sundayStop)  )
+{
+	$_SESSION['error_empty'] = "Empty time of working!!!";
+	header("location: create_timeofworking_form.php");
 	exit();
 }
 
-$sundayStop = ltrim(rtrim(filter_input(INPUT_POST, "sundayStop", FILTER_SANITIZE_STRING)));
-if (empty($sundayStop))
-{
-	$response["success"] = 0;
-    $response["message"] = "Errror in attribute sundayStop";
-    echo json_encode($response);
-	exit();
-}
 require_once "configuration.php";
 
 
 $dbConnection = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUsername, $dbPassword);
 $dbConnection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$dbConnection->query('SET CHARSET utf8');
 
 
 $query = "INSERT INTO timeofworking (mondayStart, mondayStop, tuesdayStart, tuesdayStop, wednesdayStart, wednesdayStop, thursdayStart, thursdayStop, fridayStart, fridayStop, saturdayStart, saturdayStop, sundayStart, sundayStop)
@@ -151,19 +144,22 @@ $statement->bindParam(":saturdayStart", $saturdayStart, PDO::PARAM_STR);
 $statement->bindParam(":saturdayStop", $saturdayStop, PDO::PARAM_STR);
 $statement->bindParam(":sundayStart", $sundayStart, PDO::PARAM_STR);
 $statement->bindParam(":sundayStop", $sundayStop, PDO::PARAM_STR);
-$statement->execute();
 
 
-  if ($query) {
-		$_SESSION['added_timeofworking']=true;
-		header("location: create_timeofworking_form.php");
-		exit();
-    } 
-	else {
-		$_SESSION['added_timeofworking']=false;
-		header("location: create_timeofworking_form.php");
-		exit();
-    }
+try 
+{
+	$statement->execute();
+} 
+catch (Exception $th) 
+{
+	$_SESSION['added_timeofworking']=false;
+	header("location: create_timeofworking_form.php");
+	exit();
+}
+
+$_SESSION['added_timeofworking']=true;
+header("location: create_timeofworking_form.php");
+exit();
 
 
 ?>
