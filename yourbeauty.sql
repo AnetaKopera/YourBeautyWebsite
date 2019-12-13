@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 12 Gru 2019, 23:09
+-- Czas generowania: 13 Gru 2019, 23:04
 -- Wersja serwera: 10.4.6-MariaDB
 -- Wersja PHP: 7.3.9
 
@@ -34,7 +34,7 @@ CREATE TABLE `firms` (
   `idOwner` int(5) NOT NULL,
   `city` varchar(30) COLLATE utf8_bin NOT NULL,
   `street` varchar(50) COLLATE utf8_bin NOT NULL,
-  `category` varchar(30) COLLATE utf8_bin DEFAULT NULL
+  `category` varchar(30) COLLATE utf8_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
@@ -49,7 +49,8 @@ INSERT INTO `firms` (`id`, `nameOfCompany`, `idOwner`, `city`, `street`, `catego
 (5, 'Perfect', 8, 'Warszawa', 'Badowska 67', 'Estetic Medicine'),
 (7, 'Paznokcie', 8, 'Warszawa', 'Gorska 677', 'Nails'),
 (8, 'Lakierex', 8, 'Chojne', 'Główna 118', 'Nails'),
-(14, 'Zdrowe włosy', 8, 'Warszawa', 'Badowska 67', 'Hairdresser');
+(14, 'Zdrowe włosy', 8, 'Warszawa', 'Badowska 67', 'Hairdresser'),
+(33, 'Strong nails', 8, 'Gdańsk', 'Pomorska 981', 'Nails');
 
 -- --------------------------------------------------------
 
@@ -147,7 +148,9 @@ CREATE TABLE `timeofworking` (
 
 INSERT INTO `timeofworking` (`id`, `mondayStart`, `mondayStop`, `tuesdayStart`, `tuesdayStop`, `wednesdayStart`, `wednesdayStop`, `thursdayStart`, `thursdayStop`, `fridayStart`, `fridayStop`, `saturdayStart`, `saturdayStop`, `sundayStart`, `sundayStop`) VALUES
 (1, '08:00:00', '15:00:00', '08:00:00', '15:00:00', '08:00:00', '15:00:00', '08:00:00', '15:00:00', '08:00:00', '16:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00'),
-(3, '06:00:00', '14:00:00', '07:00:00', '14:00:00', '10:00:00', '16:00:00', '12:00:00', '13:00:00', '00:00:00', '00:00:00', '08:00:00', '12:00:00', '00:00:00', '00:00:00');
+(3, '06:00:00', '14:00:00', '07:00:00', '14:00:00', '10:00:00', '16:00:00', '12:00:00', '13:00:00', '00:00:00', '00:00:00', '08:00:00', '12:00:00', '00:00:00', '00:00:00'),
+(6, '03:03:00', '06:01:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00'),
+(7, '01:01:00', '00:00:00', '04:00:00', '02:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00', '00:00:00');
 
 -- --------------------------------------------------------
 
@@ -271,7 +274,8 @@ ALTER TABLE `timeofworking`
 -- Indeksy dla tabeli `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- Indeksy dla tabeli `visits`
@@ -299,7 +303,7 @@ ALTER TABLE `workers`
 -- AUTO_INCREMENT dla tabeli `firms`
 --
 ALTER TABLE `firms`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT dla tabeli `opinions`
@@ -311,25 +315,25 @@ ALTER TABLE `opinions`
 -- AUTO_INCREMENT dla tabeli `services`
 --
 ALTER TABLE `services`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT dla tabeli `tenure`
 --
 ALTER TABLE `tenure`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT dla tabeli `timeofworking`
 --
 ALTER TABLE `timeofworking`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT dla tabeli `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT dla tabeli `visits`
@@ -341,7 +345,7 @@ ALTER TABLE `visits`
 -- AUTO_INCREMENT dla tabeli `workers`
 --
 ALTER TABLE `workers`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Ograniczenia dla zrzutów tabel

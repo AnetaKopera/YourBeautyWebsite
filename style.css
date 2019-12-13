@@ -9,7 +9,7 @@ body {
 
 table{
 	margin-top:20px;
-	border-collapse: collapse;
+  border-collapse: collapse;
 }
 
 table th {
@@ -20,7 +20,7 @@ table th {
 }
 
 table tr{
-	background-color:#ced9f0;
+  background-color:#ced9f0;
 	border-bottom: 1px solid #000000;
 	padding:10px;
 	text-align:center;
