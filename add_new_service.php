@@ -51,6 +51,7 @@ require_once "configuration.php";
 
 $dbConnection = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUsername, $dbPassword);
 $dbConnection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$dbConnection->query('SET CHARSET utf8');
 
 $query = "INSERT INTO services (typeOfService, description, price, timeOfService, idFirm) VALUES(:typeOfService, :description, :price, :timeOfService, :idFirm)";
 $statement = $dbConnection->prepare($query);
@@ -59,7 +60,6 @@ $statement->bindParam(":description", $description, PDO::PARAM_STR);
 $statement->bindParam(":price", $price, PDO::PARAM_INT);
 $statement->bindParam(":timeOfService", $timeOfService, PDO::PARAM_INT);
 $statement->bindParam(":idFirm", $idFirm, PDO::PARAM_INT);
-
 
 try 
 {
