@@ -87,45 +87,45 @@
 	<button class="button" type="submit"><span>Create firm</span></button>
 	
 </form>
+</div>
 	
-	<div id="snackbar">Firm succesfully added!</div>
-	<div id="snackbar2">Firm not added!</div>
 	
-	<script>
-	function Positive()
+<script>
+	function TextPositive()
+	{
+		document.getElementById('snackbar').textContent = "Firm successfully aded.";
+	}
+	function TextNegative()
+	{
+		document.getElementById('snackbar').textContent = "Firm NOT aded.";
+	}
+</script>
+
+	
+<div id="snackbar"></div>	
+<script>
+	function SnackbarShow()
 	{
 		var x = document.getElementById("snackbar"); 
 		x.className = "show";
 		setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 	}
+</script>
 
-	function Negative()
+<?php
+	if(isset($_SESSION['added_firm']) )
 	{
-		var x = document.getElementById("snackbar2"); 
-		x.className = "show";
-		setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
-	}
-	</script>
-	<?php
-	if(isset($_SESSION['added_firm']) && ($_SESSION['added_firm']==true))
-	{
-		echo '<script type="text/javascript">',
-		'Positive();',
+		echo '<script>';
+		if($_SESSION['added_firm'] ==true) 		{ echo 'TextPositive();';}
+		else 									{ echo 'TextNegative();';}
+		echo 'SnackbarShow();',
 		'</script>';
 		unset($_SESSION['added_firm']);
 		
 	}
+?>
 
-	if(isset($_SESSION['added_firm']) && ($_SESSION['added_firm']==false))
-	{
-		echo '<script type="text/javascript">',
-		'Negative();',
-		'</script>';
-		unset($_SESSION['added_firm']);	
-	}
-	?>
-	
-</div>
+
 
 </body>
 </html>
