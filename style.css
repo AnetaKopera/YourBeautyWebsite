@@ -1,7 +1,10 @@
+html, body { height: 100%; width: 100%; }
+
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background-color:#c6c9cf;
+  background: rgb(185,228,113);
+  background: linear-gradient(0deg, rgba(185,228,113,1) 0%, rgba(30,193,223,1) 53%, rgba(54,85,145,1) 93%);
 }
 
 table{
@@ -71,9 +74,8 @@ table td{
   right: 0;
 }
 
-input[type=text] {
-  border-radius: 2px;
-  border-color: #5588ed;
+input[type=text], input[type=password], input[type=time]  {
+  border: 2px ridge #e9e07f;
 }
 
 label
