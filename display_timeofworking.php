@@ -17,7 +17,7 @@
 
 </head>
 <body>
-
+<div id="panel-container">
 <div class="topnav">
   <a href="mainMenu.php">Home</a>
   <a href="display_firms.php">Display firms</a>
@@ -30,6 +30,7 @@
   <a href="display_workers.php">Display workers</a>
 </div>
 
+<div id="panel-page-container">
 <?php
 
 
@@ -51,6 +52,7 @@ $dbConnection->query('SET CHARSET utf8');
 $query = "SELECT * FROM timeofworking";
 $statement = $dbConnection->prepare($query);
 $statement->execute();
+echo "<div>";
 
 
 /* Manipulate the query result */
@@ -77,11 +79,13 @@ if ($statement->rowCount() > 0)
 
 echo "<p>" . $statement->rowCount() . " records found.</p>";
 
+echo "</div>";
 ?> 
 
 </form>
 
-
+</div>
+</div>
 
 </body>
 </html>

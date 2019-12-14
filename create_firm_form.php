@@ -17,7 +17,7 @@
 
 </head>
 <body>
-
+  <div id="panel-container">
 <div class="topnav">
   <a href="mainMenu.php">Home</a>
   <a class="active" href="create_firm_form.php">Add firm</a>
@@ -27,7 +27,7 @@
   <a href="create_user_form.php">Add user </a>
   <a href="create_worker_form.php">Add worker </a>
 </div>
-
+<div id="panel-page-container">
 <div class="formularz">
 	<form action="add_new_firm.php" method="post">
 
@@ -124,7 +124,8 @@
 		
 	}
 ?>
-
+</div>
+</div>
 
 
 </body>
