@@ -62,12 +62,18 @@ if ($statement->rowCount() > 0)
 {
     echo "<table>";
     $result = $statement->fetchAll(PDO::FETCH_OBJ);
-	echo "<th>Id</th> <th>Name of company</th><th>Id owner</th><th>City</th><th>Street</th><th>Category</th> ";
+	echo "<th>Id</th> <th>Name of company</th><th>Id owner</th><th>City</th><th>Street</th><th>Category</th><th>Edit</th><th>Delete</th>";
     foreach ($result as $row)
     {
         echo "<tr>";
         echo "<td>" . $row->id . "</td><td>" . $row->nameOfCompany . "</td><td>" . $row->idOwner . "</td>
-		<td>" . $row->city . "</td><td>" . $row->street . "</td><td>"  . $row->category . "</td>";
+        <td>" . $row->city . "</td><td>" . $row->street . "</td><td>"  . $row->category 
+          . "</td><td><a href='update_firm_form.php?id=" . $row->id .
+          "&nameOfCompany=" . $row->nameOfCompany .
+          "&idOwner=" . $row->idOwner .
+          "&city=" . $row->city .
+          "&street=" . $row->street .
+          "&category=" . $row->category . "'>Edit</a></td>" ."<td><a href='javascript:deleteRecord(" . $row->id . ")'>Delete</a></td>" ;
       
         echo "</tr>";
     }
@@ -79,6 +85,73 @@ echo "</div>";
 ?> 
 
 </form>
+	
+<script>
+	function TextPositive()
+	{
+		document.getElementById('snackbar').textContent = "Firm successfully updated.";
+	}
+	function TextNegative()
+	{
+		document.getElementById('snackbar').textContent = "Firm NOT updated.";
+	}
+  function TextPositive2()
+	{
+		document.getElementById('snackbar').textContent = "Firm successfully deleted.";
+	}
+	function TextNegative2()
+	{
+		document.getElementById('snackbar').textContent = "Firm NOT deleted.";
+	}
+
+  
+</script>
+
+<form id = 'deleteRecord' action = 'delete_firm.php' method = 'post'>
+<input type = 'hidden' id = 'id' name = 'id'>
+</form>
+
+<script>
+    function deleteRecord(id)
+    {
+        document.getElementById('id').value = id.toString();
+        document.getElementById('deleteRecord').submit();
+    }
+</script>
+
+<div id="snackbar"></div>	
+<script>
+	function SnackbarShow()
+	{
+		var x = document.getElementById("snackbar"); 
+		x.className = "show";
+		setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+	}
+</script>
+
+
+<?php
+	if(isset($_SESSION['updated_firm']) )
+	{
+		echo '<script>';
+		if($_SESSION['updated_firm'] ==true) 		{ echo 'TextPositive();';}
+		else 									{ echo 'TextNegative();';}
+		echo 'SnackbarShow();',
+		'</script>';
+		unset($_SESSION['updated_firm']);
+		
+  }
+  else if(isset($_SESSION['deleted_firm']) )
+	{
+		echo '<script>';
+		if($_SESSION['deleted_firm'] ==true) 		{ echo 'TextPositive2();';}
+		else 								                  	{ echo 'TextNegative2();';}
+		echo 'SnackbarShow();',
+		'</script>';
+		unset($_SESSION['deleted_firm']);
+		
+	}
+?>
 
 </div>
 </div>

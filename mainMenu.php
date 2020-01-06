@@ -18,8 +18,7 @@
 <div class="topnav">
   <a class="active" >Home</a>
   <a href="create_firm_form.php">Add values to tables</a>
-  <a href="display_firms.php">Display tables</a>
-  <a href="#about">Edit tables</a>
+  <a href="display_firms.php">Modify tables</a>
   <a href="logout.php">Log out</a>
 </div>
 
