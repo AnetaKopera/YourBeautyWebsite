@@ -53,6 +53,17 @@ table td{
   justify-content: center;
 }
 
+.tablelink{
+  text-decoration: none;
+  color: #000000;
+  border: 2px solid #0a2561;
+  background-color: #ffffff;
+  border-radius: 7px;
+  padding: 4px;
+  font-style: italic;
+  font-size: 16px;
+}
+
 .button{
   border-radius: 10px;
   background-color: #ced9f0;

@@ -21,14 +21,13 @@
 <div id="panel-container">
 <div class="topnav">
   <a href="mainMenu.php">Home</a>
-  <a class="active" >Display firms</a>
-  <a href="display_services.php">Display services</a>
-  <a href="display_opinions.php">Display opinions</a>
-  <a href="display_tenure.php" >Display tenure</a>
-  <a href="display_timeofworking.php">Display time of working</a>
-  <a href="display_users.php">Display users</a>
-  <a href="display_visits.php">Display visits</a>
-  <a href="display_workers.php">Display workers</a>
+  <a class="active" >Firms</a>
+  <a href="display_services.php">Services</a>
+  <a href="display_tenure.php" >Tenure</a>
+  <a href="display_timeofworking.php">Time of working</a>
+  <a href="display_users.php">Users</a>
+  <a href="display_visits.php">Visits</a>
+  <a href="display_workers.php">Workers</a>
 </div>
 
 
@@ -73,7 +72,9 @@ if ($statement->rowCount() > 0)
           "&idOwner=" . $row->idOwner .
           "&city=" . $row->city .
           "&street=" . $row->street .
-          "&category=" . $row->category . "'>Edit</a></td>" ."<td><a href='javascript:deleteRecord(" . $row->id . ")'>Delete</a></td>" ;
+          "&category=" . $row->category . "' class='tablelink' >Edit</a></td>" 
+          
+          ."<td><a href='javascript:deleteRecord(" . $row->id . ")' class='tablelink'>Delete</a></td>" ;
       
         echo "</tr>";
     }

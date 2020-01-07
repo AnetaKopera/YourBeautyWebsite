@@ -21,14 +21,14 @@
 <div id="panel-container">
 <div class="topnav">
   <a href="mainMenu.php">Home</a>
-  <a href="display_firms.php">Display firms</a>
-  <a href="display_services.php" >Display services</a>
-  <a class="active">Display opinions</a>
-  <a href="display_tenure.php" >Display tenure</a>
-  <a href="display_timeofworking.php">Display time of working</a>
-  <a href="display_users.php">Display users</a>
-  <a href="display_visits.php">Display visits</a>
-  <a href="display_workers.php">Display workers</a>
+  <a href="display_firms.php">Firms</a>
+  <a href="display_services.php">Services</a>
+  <a class="active">Opinions</a>
+  <a href="display_tenure.php" >Tenure</a>
+  <a href="display_timeofworking.php">Time of working</a>
+  <a href="display_users.php">Users</a>
+  <a href="display_visits.php">Visits</a>
+  <a href="display_workers.php">Workers</a>
 </div>
 
 
