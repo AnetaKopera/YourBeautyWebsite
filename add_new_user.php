@@ -73,7 +73,7 @@ if ((empty($password)) || (!filter_var($password, FILTER_SANITIZE_STRING)))
 }
 
 $bank_account_number = ltrim(rtrim(filter_input(INPUT_POST, "bank_account_number", FILTER_SANITIZE_NUMBER_INT)));
-if ( ((empty($bank_account_number)) && ((($account_type)!='C')  && (($account_type)!='O') )) || (!filter_var($bank_account_number, FILTER_SANITIZE_NUMBER_INT)))
+if ( ((empty($bank_account_number)) && ((($account_type)=='C')  || (($account_type)=='O') )) || $bank_account_number!=(filter_var($bank_account_number, FILTER_SANITIZE_NUMBER_INT)))
 {
 	$_SESSION['error_bank_account_number'] = "Empty or error in bank account number";
 	header("location: create_user_form.php");

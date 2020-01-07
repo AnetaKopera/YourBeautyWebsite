@@ -48,7 +48,7 @@ if (empty($street)  || (!filter_var($street, FILTER_SANITIZE_STRING)))
 $category = ltrim(rtrim(filter_input(INPUT_POST, "category", FILTER_SANITIZE_STRING)));
 if (empty($category) || (!filter_var($category, FILTER_SANITIZE_STRING)))
 {
-	$_SESSION['updated_firm']=false;QA
+	$_SESSION['updated_firm']=false;
 	header("location: display_firms.php");
 	exit();
 }
