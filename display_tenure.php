@@ -59,12 +59,18 @@ if ($statement->rowCount() > 0)
 {
     echo "<table>";
     $result = $statement->fetchAll(PDO::FETCH_OBJ);
-	echo "<th>Id</th> <th>Id firm</th><th>Id Service</th><th>Id worker</th>";
+	echo "<th>Id</th> <th>Id firm</th><th>Id Service</th><th>Id worker</th><th>Edit</th><th>Dispaly</th>";
     foreach ($result as $row)
     {
         echo "<tr>";
         echo "<td>" . $row->id . "</td><td>" . $row->idFirm . "</td><td>" . $row->idService . "</td>
-		<td>" . $row->idWorker . "</td>";
+        <td>" . $row->idWorker . "</td>"
+        . "</td><td><a href='update_tenure_form.php?id=" . $row->id .
+            "&idFirm=" . $row->idFirm .
+            "&idService=" . $row->idService .
+            "&idWorker=" . $row->idWorker ."' class='tablelink'>Edit</a></td>" 
+            ."<td><a href='javascript:deleteRecord(" . $row->id . ")' class='tablelink'>Delete</a></td>" ;
+        
       
         echo "</tr>";
     }
@@ -78,6 +84,74 @@ echo "</div>";
 
 </form>
 
+
+
+<script>
+	function TextPositive()
+	{
+		document.getElementById('snackbar').textContent = "Tenure successfully updated.";
+	}
+	function TextNegative()
+	{
+		document.getElementById('snackbar').textContent = "Tenure NOT updated.";
+	}
+  function TextPositive2()
+	{
+		document.getElementById('snackbar').textContent = "Tenure successfully deleted.";
+	}
+	function TextNegative2()
+	{
+		document.getElementById('snackbar').textContent = "Tenure NOT deleted.";
+	}
+
+  
+</script>
+
+<form id = 'deleteRecord' action = 'delete_tenure.php' method = 'post'>
+<input type = 'hidden' id = 'id' name = 'id'>
+</form>
+
+<script>
+    function deleteRecord(id)
+    {
+        document.getElementById('id').value = id.toString();
+        document.getElementById('deleteRecord').submit();
+    }
+</script>
+
+<div id="snackbar"></div>	
+<script>
+	function SnackbarShow()
+	{
+		var x = document.getElementById("snackbar"); 
+		x.className = "show";
+		setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+	}
+</script>
+
+
+<?php
+	if(isset($_SESSION['updated_tenure']) )
+	{
+		echo '<script>';
+		if($_SESSION['updated_tenure'] ==true) 		  { echo 'TextPositive();';}
+		else 									                      { echo 'TextNegative();';}
+		echo 'SnackbarShow();',
+		'</script>';
+		unset($_SESSION['updated_tenure']);
+		
+  }
+  else if(isset($_SESSION['deleted_tenure']) )
+	{
+		echo '<script>';
+		if($_SESSION['deleted_tenure'] ==true) 		{ echo 'TextPositive2();';}
+		else 								                  	  { echo 'TextNegative2();';}
+		echo 'SnackbarShow();',
+		'</script>';
+		unset($_SESSION['deleted_tenure']);
+		
+	}
+?>
 </div>
 </div>
 
