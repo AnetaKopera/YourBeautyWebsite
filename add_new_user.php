@@ -107,8 +107,8 @@ try
 catch (Exception $th) 
 {
 	$_SESSION['added_user']=false;
-		header("location: create_user_form.php");
-		exit();
+	header("location: create_user_form.php");
+	exit();
 }
 	$_SESSION['added_user']=true;
 	header("location: create_user_form.php");

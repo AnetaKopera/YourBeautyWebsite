@@ -32,29 +32,17 @@
 <div id="panel-page-container">
 <?php
 
-
-
-/* Include "configuration.php" file */
 require_once "configuration.php";
 
-
-
-/* Connect to the database */
 $dbConnection = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUsername, $dbPassword);
-$dbConnection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);   // set the PDO error mode to exception
+$dbConnection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $dbConnection->query('SET CHARSET utf8');
-
-
-
-/* Perform Query */
 
 $query = "SELECT * FROM visits";
 $statement = $dbConnection->prepare($query);
 $statement->execute();
 echo "<div>";
 
-
-/* Manipulate the query result */
 if ($statement->rowCount() > 0)
 {
     echo "<table>";
