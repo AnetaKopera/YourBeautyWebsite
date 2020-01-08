@@ -48,13 +48,14 @@ if ($statement->rowCount() > 0)
     echo "<table>";
     $result = $statement->fetchAll(PDO::FETCH_OBJ);
 	echo "<th>Id</th> <th>Id service</th><th>Date of visit</th><th>Hour of visit</th><th>Pay in advance</th><th>Id worker</th> ";
-	echo "<th>Id client</th>";
+	echo "<th>Id client</th><th>Delete</th>";
     foreach ($result as $row)
     {
         echo "<tr>";
         echo "<td>" . $row->id . "</td><td>" . $row->idService . "</td><td>" . $row->dateVisit . "</td>
-		<td>" . $row->hourVisit . "</td><td>" . $row->payInAdvance . "</td><td>"  . $row->idWorker . "</td>
-		<td>" . $row->idClient . "</td>";
+              <td>" . $row->hourVisit . "</td><td>" . $row->payInAdvance . "</td><td>"  . $row->idWorker . "</td>
+              <td>" . $row->idClient . "</td>"
+            ."<td><a href='javascript:deleteRecord(" . $row->id . ")' class='tablelink'>Delete</a></td>" ;
       
         echo "</tr>";
     }
@@ -68,6 +69,54 @@ echo "</div>";
 
 </form>
 
+<script>
+  function TextPositive2()
+	{
+		document.getElementById('snackbar').textContent = "Visit successfully deleted.";
+	}
+	function TextNegative2()
+	{
+		document.getElementById('snackbar').textContent = "Visit NOT deleted.";
+	}
+
+  
+</script>
+
+<form id = 'deleteRecord' action = 'delete_visit.php' method = 'post'>
+<input type = 'hidden' id = 'id' name = 'id'>
+</form>
+
+<script>
+    function deleteRecord(id)
+    {
+        document.getElementById('id').value = id.toString();
+        document.getElementById('deleteRecord').submit();
+    }
+</script>
+
+<div id="snackbar"></div>	
+<script>
+	function SnackbarShow()
+	{
+		var x = document.getElementById("snackbar"); 
+		x.className = "show";
+		setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+	}
+</script>
+
+
+<?php
+	 if(isset($_SESSION['deleted_visit']) )
+	{
+		echo '<script>';
+		if($_SESSION['deleted_visit'] ==true) 	        	{ echo 'TextPositive2();';}
+		else 								                  	          { echo 'TextNegative2();';}
+		echo 'SnackbarShow();',
+		'</script>';
+		unset($_SESSION['deleted_visit']);
+		
+	}
+?>
 </div>
 </div>
 
