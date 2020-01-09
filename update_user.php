@@ -69,9 +69,7 @@ if ((empty($email)) || (!filter_var($email, FILTER_SANITIZE_EMAIL)))
 
 
 $bankAccountNumber = ltrim(rtrim(filter_input(INPUT_POST, "bankAccountNumber", FILTER_SANITIZE_STRING)));
-
-
-if ( ((empty($bankAccountNumber) || $bankAccountNumber=="-") && ((($userType)=='C')  || (($userType)=='O') )) || $bankAccountNumber!=(filter_var($bankAccountNumber, FILTER_SANITIZE_STRING)))
+if ( ((empty($bankAccountNumber)) && ((($userType)=='C')  || (($userType)=='O') )) || $bankAccountNumber!=(filter_var($bankAccountNumber, FILTER_SANITIZE_STRING )) || !(is_numeric($bankAccountNumber)) || (strlen($bankAccountNumber)<26))
 {
    $_SESSION['updated_user'] = false;
 	header("location: display_users.php");

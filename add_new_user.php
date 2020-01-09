@@ -72,8 +72,8 @@ if ((empty($password)) || (!filter_var($password, FILTER_SANITIZE_STRING)))
 	exit(); 
 }
 
-$bank_account_number = ltrim(rtrim(filter_input(INPUT_POST, "bank_account_number", FILTER_SANITIZE_NUMBER_INT)));
-if ( ((empty($bank_account_number)) && ((($account_type)=='C')  || (($account_type)=='O') )) || $bank_account_number!=(filter_var($bank_account_number, FILTER_SANITIZE_NUMBER_INT)))
+$bank_account_number = ltrim(rtrim(filter_input(INPUT_POST, "bank_account_number", FILTER_SANITIZE_STRING)));
+if ( ((empty($bank_account_number)) && ((($account_type)=='C')  || (($account_type)=='O') )) || $bank_account_number!=(filter_var($bank_account_number, FILTER_SANITIZE_STRING )) || !(is_numeric($bank_account_number)) || (strlen($bank_account_number)<26))
 {
 	$_SESSION['error_bank_account_number'] = "Empty or error in bank account number";
 	header("location: create_user_form.php");
@@ -98,7 +98,7 @@ $statement->bindParam(":gender", $gender, PDO::PARAM_STR);
 $statement->bindParam(":account_type", $account_type, PDO::PARAM_STR);
 $statement->bindParam(":email", $email, PDO::PARAM_STR);
 $statement->bindParam(":password", $password, PDO::PARAM_STR);
-$statement->bindParam(":bank_account_number", $bank_account_number, PDO::PARAM_INT);
+$statement->bindParam(":bank_account_number", $bank_account_number, PDO::PARAM_STR);
 
 try 
 {
