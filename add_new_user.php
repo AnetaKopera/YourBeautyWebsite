@@ -72,6 +72,8 @@ if ((empty($password)) || (!filter_var($password, FILTER_SANITIZE_STRING)))
 	exit(); 
 }
 
+$password = password_hash($password, PASSWORD_DEFAULT);
+
 $bank_account_number = ltrim(rtrim(filter_input(INPUT_POST, "bank_account_number", FILTER_SANITIZE_STRING)));
 if ( ((empty($bank_account_number)) && ((($account_type)=='C')  || (($account_type)=='O') )) || $bank_account_number!=(filter_var($bank_account_number, FILTER_SANITIZE_STRING )) || !(is_numeric($bank_account_number)) || (strlen($bank_account_number)<26))
 {

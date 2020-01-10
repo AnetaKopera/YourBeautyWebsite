@@ -13,6 +13,7 @@ if (empty($login) || (!filter_var($login, FILTER_VALIDATE_EMAIL)))
 }
 
 $password = ltrim(rtrim(filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING)));
+
 if (empty($password))
 {
 	$_SESSION['error_password'] = "Error in password";
@@ -21,21 +22,27 @@ if (empty($password))
 }
 
 
+
 require_once "configuration.php";
 
 $dbConnection = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUsername, $dbPassword);
 $dbConnection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);  
 $dbConnection->query('SET CHARSET utf8');
 
-$query = "SELECT id FROM `users` WHERE email= :email AND  password= :password AND userType = 'A' ";
+$query = "SELECT id, password FROM `users` WHERE email= :email  AND userType = 'A' ";
 $statement = $dbConnection->prepare($query);
 $statement->bindParam(":email", $login, PDO::PARAM_STR);
-$statement->bindParam(":password", $password, PDO::PARAM_STR);
 $statement->execute();
 
+$result = $statement->fetchAll(PDO::FETCH_OBJ);
+$passDataBase = null;
+foreach ($result as $row)
+{
+	$passDataBase = $row->password;
+}
 
-   if ($statement->rowCount() > 0) {
-
+if( password_verify($password, $passDataBase) == true)
+  {
 		$_SESSION['admin']=true;
 		header("location: mainMenu.php");
 		exit();
