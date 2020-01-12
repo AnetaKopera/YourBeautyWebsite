@@ -64,25 +64,6 @@
 		}
 	?>
 
-	<label for="date_of_birth">Date of birth: </label>
-	<input type="text" id = "date_of_birth" name = "date_of_birth"><br>
-	<?php 
-		if(isset($_SESSION['error_date_of_birth'] ) )
-		{
-			echo "<p class='error'>" .$_SESSION['error_date_of_birth'] ."</p>";
-			unset($_SESSION['error_date_of_birth']);
-		}
-	?>
-
-	<label for="gender">Gender: </label>
-	<input type="text" id = "gender" name = "gender"><br>
-	<?php 
-		if(isset($_SESSION['error_gender'] ) )
-		{
-			echo "<p class='error'>" .$_SESSION['error_gender'] ."</p>";
-			unset($_SESSION['error_gender']);
-		}
-	?>
 
 	<label for="account_type">Account type: </label>
 	<input type="text" id = "account_type" name = "account_type"><br>
@@ -114,15 +95,6 @@
 		}
 	?>
 
-	<label for="bank_account_number"> Bank account number: </label>
-	<input type="text" id = "bank_account_number" name = "bank_account_number"><br>
-	<?php 
-		if(isset($_SESSION['error_bank_account_number'] ) )
-		{
-			echo "<p class='error'>" .$_SESSION['error_bank_account_number'] ."</p>";
-			unset($_SESSION['error_bank_account_number']);
-		}
-	?>
 			  
 	<button class="button" type="submit"><span>Create user</span></button>
 	</form>

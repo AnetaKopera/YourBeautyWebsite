@@ -47,25 +47,21 @@ if ($statement->rowCount() > 0)
 {
     echo "<table>";
     $result = $statement->fetchAll(PDO::FETCH_OBJ);
-	echo "<th>Id</th> <th>Surname</th><th>Name</th><th>Second name</th><th>Date of birth</th><th>Gender</th> ";
-	echo "<th>User type</th><th>Email</th><th>Bank account number</th><th>Edit</th><th>Delete</th>";
+	echo "<th>Id</th> <th>Surname</th><th>Name</th><th>Second name</th> ";
+	echo "<th>User type</th><th>Email</th><th>Edit</th><th>Delete</th>";
     foreach ($result as $row)
     {
 		if($row->name2==null){$row->name2="-";}
-		if($row->bankAccountNumber==null){$row->bankAccountNumber="-";}
         echo "<tr>";
         echo "<td>" . $row->id . "</td><td>" . $row->surname . "</td><td>" . $row->name . "</td>
-            <td>" . $row->name2 . "</td><td>" . $row->dateOfBirth . "</td><td>"  . $row->gender . "</td>
-            <td>" . $row->userType . "</td><td>" . $row->email . "</td><td>"  . $row->bankAccountNumber . "</td>"
+            <td>" . $row->name2 . "</td>
+            <td>" . $row->userType . "</td><td>" . $row->email . "</td>"
             . "</td><td><a href='update_user_form.php?id=" . $row->id .
             "&surname=" . $row->surname .
             "&name=" . $row->name .
             "&name2=" . $row->name2 .
-            "&dateOfBirth=" . $row->dateOfBirth .
-            "&gender=" . $row->gender .
             "&userType=" . $row->userType .
             "&email=" . $row->email .
-            "&bankAccountNumber=" . $row->bankAccountNumber .
             "' class='tablelink'>Edit</a></td>" 
             ."<td><a href='javascript:deleteRecord(" . $row->id . ")' class='tablelink'>Delete</a></td>" ;
 

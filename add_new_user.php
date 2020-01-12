@@ -31,22 +31,6 @@ if(!filter_var($surname, FILTER_SANITIZE_STRING) )
 	exit();
 }
 
-$date_of_birth = ltrim(rtrim(filter_input(INPUT_POST, "date_of_birth", FILTER_SANITIZE_STRING)));
-if ((empty($date_of_birth)) || (!filter_var($date_of_birth, FILTER_SANITIZE_STRING)))
-{
-	$_SESSION['error_date_of_birth'] = "Empty or error in date of birth";
-	header("location: create_user_form.php");
-	exit();
-}
-
-$gender = ltrim(rtrim(filter_input(INPUT_POST, "gender", FILTER_SANITIZE_STRING)));
-if ((empty($gender)) || ((($gender)!="M") && (($gender)!="W")) || (!filter_var($gender, FILTER_SANITIZE_STRING)))
-{
-	$_SESSION['error_gender'] = "Empty or error in gender";
-	header("location: create_user_form.php");
-	exit();
-}
-
 
 $account_type = ltrim(rtrim(filter_input(INPUT_POST, "account_type", FILTER_SANITIZE_STRING)));
 if ((empty($account_type)) || ((($account_type)!='C') && (($account_type)!='W') && (($account_type)!='A') && (($account_type)!='O') ) || (!filter_var($account_type, FILTER_SANITIZE_STRING)))
@@ -74,15 +58,6 @@ if ((empty($password)) || (!filter_var($password, FILTER_SANITIZE_STRING)))
 
 $password = password_hash($password, PASSWORD_DEFAULT);
 
-$bank_account_number = ltrim(rtrim(filter_input(INPUT_POST, "bank_account_number", FILTER_SANITIZE_STRING)));
-if ( ((empty($bank_account_number)) && ((($account_type)=='C')  || (($account_type)=='O') )) || $bank_account_number!=(filter_var($bank_account_number, FILTER_SANITIZE_STRING )) || !(is_numeric($bank_account_number)) || (strlen($bank_account_number)<26))
-{
-	$_SESSION['error_bank_account_number'] = "Empty or error in bank account number";
-	header("location: create_user_form.php");
-	exit();  
-}
-
-
 require_once "configuration.php";
 
 
@@ -90,17 +65,14 @@ $dbConnection = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUsername, $dbPas
 $dbConnection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $dbConnection->query('SET CHARSET utf8');
 
-$query = "INSERT INTO users (surname, name, name2, dateOfBirth, gender, userType, email, password, bankAccountNumber) VALUES(:surname, :name, :name2, :date_of_birth, :gender, :account_type, :email, :password, :bank_account_number)";
+$query = "INSERT INTO users (surname, name, name2, userType, email, password) VALUES(:surname, :name, :name2, :account_type, :email, :password)";
 $statement = $dbConnection->prepare($query);
 $statement->bindParam(":surname", $surname, PDO::PARAM_STR);
 $statement->bindParam(":name", $name, PDO::PARAM_STR);
 $statement->bindParam(":name2", $name2, PDO::PARAM_STR);
-$statement->bindParam(":date_of_birth", $date_of_birth, PDO::PARAM_STR);
-$statement->bindParam(":gender", $gender, PDO::PARAM_STR);
 $statement->bindParam(":account_type", $account_type, PDO::PARAM_STR);
 $statement->bindParam(":email", $email, PDO::PARAM_STR);
 $statement->bindParam(":password", $password, PDO::PARAM_STR);
-$statement->bindParam(":bank_account_number", $bank_account_number, PDO::PARAM_STR);
 
 try 
 {
