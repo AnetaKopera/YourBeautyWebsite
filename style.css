@@ -26,6 +26,12 @@ table tr{
 	text-align:center;
 }
 
+.myscrollbar
+{
+  overflow: auto;
+   height:650px; 
+}
+
 .error{
   text-decoration: underline;
   font-style: italic;

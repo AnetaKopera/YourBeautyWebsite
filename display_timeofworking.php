@@ -41,7 +41,7 @@ $dbConnection->query('SET CHARSET utf8');
 $query = "SELECT * FROM timeofworking";
 $statement = $dbConnection->prepare($query);
 $statement->execute();
-echo "<div>";
+echo "<div class= 'myscrollbar'> ";
 
 if ($statement->rowCount() > 0)
 {

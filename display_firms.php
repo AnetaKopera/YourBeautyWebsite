@@ -53,7 +53,7 @@ $dbConnection->query('SET CHARSET utf8');
 $query = "SELECT id, nameOfCompany, idOwner, city, street, category FROM firms";
 $statement = $dbConnection->prepare($query);
 $statement->execute();
-echo "<div>";
+echo "<div class= 'myscrollbar'>";
 
 
 /* Manipulate the query result */
