@@ -74,23 +74,12 @@
 <script>
     if (getURLValue('id') !== null)
     {
-       	document.getElementById('id').value = getURLValue('id');
-		var tmp = getURLValue('nameOfCompany');
-		tmp = tmp.replace(/%20/g, " ");
-        document.getElementById('nameOfCompany').value = tmp ;
-        document.getElementById('idOwner').value = getURLValue('idOwner');
-		
-		tmp = getURLValue('city');
-		tmp = tmp.replace(/%20/g, " ");
-        document.getElementById('city').value = tmp;
-		
-		tmp = getURLValue('street');
-		tmp = tmp.replace(/%20/g, " ");
-        document.getElementById('street').value = tmp; 
-		
-		tmp = getURLValue('category');
-		tmp = tmp.replace(/%20/g, " ");
-        document.getElementById('category').value = tmp;
+       	document.getElementById('id').value = decodeURI(getURLValue('id'));
+        document.getElementById('nameOfCompany').value = decodeURI(getURLValue('nameOfCompany'));
+        document.getElementById('idOwner').value = decodeURI(getURLValue('idOwner'));
+        document.getElementById('city').value = decodeURI(getURLValue('city'));
+        document.getElementById('street').value = decodeURI(getURLValue('street'));
+        document.getElementById('category').value = decodeURI(getURLValue('category'));
     }
     
 </script>

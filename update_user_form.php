@@ -75,12 +75,12 @@
 <script>
     if (getURLValue('id') !== null)
     {
-       	document.getElementById('id').value = getURLValue('id');
-        document.getElementById('surname').value = getURLValue('surname');
-        document.getElementById('name').value = getURLValue('name');
-        document.getElementById('name2').value = getURLValue('name2');
-        document.getElementById('userType').value = getURLValue('userType');
-        document.getElementById('email').value = getURLValue('email');
+       	document.getElementById('id').value = decodeURI(getURLValue('id'));
+        document.getElementById('surname').value = decodeURI(getURLValue('surname'));
+        document.getElementById('name').value = decodeURI(getURLValue('name'));
+        document.getElementById('name2').value = decodeURI(getURLValue('name2'));
+        document.getElementById('userType').value = decodeURI(getURLValue('userType'));
+        document.getElementById('email').value = decodeURI(getURLValue('email'));
 		
     }
     

@@ -76,21 +76,12 @@
     if (getURLValue('id') !== null)
     {
         
-        document.getElementById('id').value = getURLValue('id');
-
-        var tmp = getURLValue('typeOfService');
-		tmp = tmp.replace(/%20/g, " ");
-       	document.getElementById('typeOfService').value = tmp;
-		
-        tmp = getURLValue('description');
-		tmp = tmp.replace(/%20/g, " ");
-        document.getElementById('description').value = tmp ;
-
-        document.getElementById('price').value = getURLValue('price');
-		
-        document.getElementById('timeOfService').value = getURLValue('timeOfService');
-		
-        document.getElementById('idFirm').value = getURLValue('idFirm');
+        document.getElementById('id').value = decodeURI(getURLValue('id'));
+       	document.getElementById('typeOfService').value = decodeURI(getURLValue('typeOfService'));
+        document.getElementById('description').value = decodeURI(getURLValue('description'));
+        document.getElementById('price').value = decodeURI(getURLValue('price'));
+        document.getElementById('timeOfService').value = decodeURI(getURLValue('timeOfService'));
+        document.getElementById('idFirm').value = decodeURI(getURLValue('idFirm'));
     }
     
 </script>
