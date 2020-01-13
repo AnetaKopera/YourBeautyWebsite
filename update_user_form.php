@@ -78,15 +78,7 @@
        	document.getElementById('id').value = decodeURI(getURLValue('id'));
         document.getElementById('surname').value = decodeURI(getURLValue('surname'));
         document.getElementById('name').value = decodeURI(getURLValue('name'));
-       
-        if(decodeURI(getURLValue('name2')) == "-")
-        {
-          document.getElementById('name2').value = "";
-        }
-        else
-        {
-          document.getElementById('name2').value = decodeURI(getURLValue('name2'));
-        }
+        document.getElementById('name2').value = decodeURI(getURLValue('name2'));
         document.getElementById('userType').value = decodeURI(getURLValue('userType'));
         document.getElementById('email').value = decodeURI(getURLValue('email'));
 		

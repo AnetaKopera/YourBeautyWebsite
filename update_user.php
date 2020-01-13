@@ -27,16 +27,21 @@ if (empty($name) || (!filter_var($name, FILTER_SANITIZE_STRING)) )
 }
 
 $name2 = ltrim(rtrim(filter_input(INPUT_POST, "name2", FILTER_SANITIZE_STRING)));
-if(!filter_var($name2, FILTER_SANITIZE_STRING) )
-{
-	$_SESSION['updated_user'] = false;
-	header("location: display_users.php");
-	exit();
-}
-if($name2 == "-")
+if($name2 == "-" || $name2=="")
 {
 	$name2="";
 }
+else{
+	if(!filter_var($name2, FILTER_SANITIZE_STRING) )
+		{
+			$_SESSION['updated_user'] = false;
+			header("location: display_users.php");
+			exit();
+		}
+}
+
+
+
 
 $userType = ltrim(rtrim(filter_input(INPUT_POST, "userType", FILTER_SANITIZE_STRING)));
 if ((empty($userType)) || ((($userType)!='C') && (($userType)!='W') && (($userType)!='A') && (($userType)!='O') ) || (!filter_var($userType, FILTER_SANITIZE_STRING)))
@@ -82,7 +87,7 @@ catch (Exception $th)
 {
     $_SESSION['updated_user']=false;
 	header("location: display_users.php");
-    exit();
+	exit();
 }
     $_SESSION['updated_user']=true;
     header("location: display_users.php");
