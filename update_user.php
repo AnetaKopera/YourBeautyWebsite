@@ -27,11 +27,15 @@ if (empty($name) || (!filter_var($name, FILTER_SANITIZE_STRING)) )
 }
 
 $name2 = ltrim(rtrim(filter_input(INPUT_POST, "name2", FILTER_SANITIZE_STRING)));
-if(!filter_var($surname, FILTER_SANITIZE_STRING) )
+if(!filter_var($name2, FILTER_SANITIZE_STRING) )
 {
 	$_SESSION['updated_user'] = false;
 	header("location: display_users.php");
 	exit();
+}
+if($name2 == "-")
+{
+	$name2="";
 }
 
 $userType = ltrim(rtrim(filter_input(INPUT_POST, "userType", FILTER_SANITIZE_STRING)));
